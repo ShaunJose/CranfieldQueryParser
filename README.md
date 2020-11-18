@@ -4,7 +4,7 @@ Parsing queries and returning results from the [Cranfield Collection](http://ir.
 
 ### Run      
 ```
-<command to run>
+mvn package
 ```
 
 ### Compile      
@@ -17,7 +17,7 @@ Parsing queries and returning results from the [Cranfield Collection](http://ir.
 
 1. [Lucene](https://lucene.apache.org/)  
 
-    macOs installation:
+    macOS installation:
     ```
     brew install lucene
     ```    
@@ -25,4 +25,17 @@ Parsing queries and returning results from the [Cranfield Collection](http://ir.
     Linux installation
     ```
     apt-get install lucene
+    ```    
+
+2. [Maven](https://maven.apache.org/)    
+
+    macOS installation
     ```
+    brew install maven
+    ```    
+
+    Linux installation
+    ```
+    apt-get install maven
+    ```   
+    
