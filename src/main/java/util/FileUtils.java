@@ -16,13 +16,11 @@ import org.apache.lucene.document.TextField;
 public class FileUtils
 {
 
-  public static ArrayList<String> readFieldsFromFile(String filepath, String[] stringFieldNames, String[] textFieldNames, String docDelimiter) throws IOException
+  public static ArrayList<String> readFieldsFromFile(String filepath, String[] fieldNames, String docDelimiter) throws IOException
   {
     String filesContents = readAll(filepath);
 
-    ArrayList<String> docContents = new ArrayList<String>(Arrays.asList(filesContents.split(docDelimiter)));
-
-    docContents.remove(0);
+    ArrayList<String> docContents = new ArrayList<String>(Arrays.asList(filesContents.replaceFirst("^" + docDelimiter, "").split(docDelimiter)));
 
     return docContents;
   }
@@ -54,7 +52,7 @@ public class FileUtils
     return doc;
   }
 
-  // public static ArrayList<Document> readAllDocuments(String filepath, String[] stringFieldNames, String[] textFieldNames, String docDelimiter)
+  // public static ArrayList<Document> readAllDocuments(String filepath, String[] fieldNames, String docDelimiter)
   // {
 	// 	ArrayList<Document> documents = new ArrayList<Document>();
   //
