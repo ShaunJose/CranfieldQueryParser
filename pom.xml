@@ -4,11 +4,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>ie.tcd.josesh</groupId>
+  <groupId>josesh</groupId>
   <artifactId>CranfieldQueryParser</artifactId>
   <version>1.2</version>
-
-  <name>CranfieldQueryParser</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -96,7 +94,7 @@
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>ie.tcd.dalyc24.QueryIndex</mainClass>
+                  <mainClass>SomeClass</mainClass>
                 </transformer>
               </transformers>
             </configuration>

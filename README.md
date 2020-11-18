@@ -9,7 +9,7 @@ mvn package
 
 ### Compile      
 ```
-<command to compile>
+java -jar target/CranfieldQueryParser-1.2.jar
 ```   
 
 
@@ -38,4 +38,3 @@ mvn package
     ```
     apt-get install maven
     ```   
-    
