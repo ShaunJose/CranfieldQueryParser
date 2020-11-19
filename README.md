@@ -30,4 +30,4 @@ java -jar target/CranfieldQueryParser-1.2.jar
 
 2. [Lucene](https://lucene.apache.org/)  
 
-    This automatically gets downloaded by maven during compilation.
+    This automatically gets downloaded by maven during project compilation.
