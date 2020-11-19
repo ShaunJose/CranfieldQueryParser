@@ -13,7 +13,7 @@ class StringUtils
     @param delim: Delimiter to split string by
     @return: ArrayList of split up strings
   */
-  public static ArrayList<String> splitWithDelimiter(String str, String delim)
+  static ArrayList<String> splitWithDelimiter(String str, String delim)
   {
     ArrayList<String> splits = new ArrayList<String>(Arrays.asList(str.split(delim)));
 
@@ -32,7 +32,7 @@ class StringUtils
     @param endStr: String before which content ends
     @return: Substring b/w beginStr and endStr
   */
-  public static String getContentBetween(String str, String beginStr, String endStr)
+  static String getContentBetween(String str, String beginStr, String endStr)
   {
     if(!str.contains(beginStr) || !str.contains(endStr))
       return null;
@@ -43,7 +43,7 @@ class StringUtils
     return str.substring(start, end);
   }
 
-  public static String getContentAfter(String str, String beginStr)
+  static String getContentAfter(String str, String beginStr)
   {
     int start = str.indexOf(beginStr) + beginStr.length();
 
