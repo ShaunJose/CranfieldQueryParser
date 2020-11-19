@@ -3,7 +3,7 @@ package searchengine;
 import util.FileUtils;
 import util.DocumentUtils;
 import constants.Constants;
-import index.Indexer;
+import indexer.Indexer;
 
 import java.io.IOException;
 import java.util.ArrayList;
