@@ -1,4 +1,5 @@
 util/StringUtils.class
 util/FileUtils.class
+constants/Constants.class
 searchengine/SearchEngine.class
 util/DocumentUtils.class
