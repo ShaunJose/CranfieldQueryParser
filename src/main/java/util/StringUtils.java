@@ -43,6 +43,13 @@ class StringUtils
     return str.substring(start, end);
   }
 
+  /**
+    Gets content after a certain substring in the string
+
+    @param str: String to search content within
+    @param beginStr: String after which content begins
+    @return: Part of string aftet beginStr
+  */
   static String getContentAfter(String str, String beginStr)
   {
     int start = str.indexOf(beginStr) + beginStr.length();

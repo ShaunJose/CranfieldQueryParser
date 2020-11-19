@@ -10,6 +10,9 @@ import org.apache.lucene.document.Document;
 
 public class SearchEngine
 {
+  /**
+    Gets Cranfield documents, indexes it etc TODO
+  */
   public static void main(String[] args) throws IOException
   {
     ArrayList<String> filesContent = FileUtils.getSeparateFileContents("data/cran/cran.all.1400", ".I [0-9]+\n");

@@ -8,12 +8,18 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
 
-//TODO: change access modifiers globally
-//TODO: all function specs
 //TODO: constants
 public class DocumentUtils
 {
 
+  /**
+    Uses files' contents to generate and return an arraylist of documents.
+
+    @param filesContent: ArrayList of contents of the files
+    @param fieldNames: Array of names of the fields in the files' contents
+    @param fieldDelims: Delimiters of fields in the files' contents
+    @return: ArrayList of Documents with fields given from files' contents given
+  */
   public static ArrayList<Document> generateDocsFromFiles(ArrayList<String> filesContent, String[] fieldNames, String[] fieldDelims)
   {
     ArrayList<Document> docs = new ArrayList<Document>();
@@ -24,6 +30,14 @@ public class DocumentUtils
     return docs;
   }
 
+  /**
+    Uses file's contents to generate and return the document.
+
+    @param fileContent: Contents of the files
+    @param fieldNames: Array of names of the fields in the file's contents
+    @param fieldDelims: Delimiters of fields in the file's contents
+    @return: ArrayList of Documents with fields given from file's contents given
+  */
   private static Document generateDocFromFile(String fileContent, String[] fieldNames, String[] fieldDelims)
   {
     String[] fields = new String[fieldDelims.length];
@@ -37,6 +51,13 @@ public class DocumentUtils
     return initDoc(fieldNames, fields);
   }
 
+  /**
+    Craetes a document with fieldNames and fields.
+
+    @param fieldNames: names of the fields the document should have
+    @param fields: Content of the fields the document should have
+    @return: Document object with fieldNames and fields given (as TextFields)
+  */
   private static Document initDoc(String[] fieldNames, String[] fields)
   {
     Document doc = new Document();
