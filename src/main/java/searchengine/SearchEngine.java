@@ -3,11 +3,13 @@ package searchengine;
 import util.FileUtils;
 import util.DocumentUtils;
 import constants.Constants;
+import index.Indexer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.lucene.document.Document;
+import org.apache.lucene.index.IndexWriter;
 
 public class SearchEngine
 {
@@ -19,6 +21,8 @@ public class SearchEngine
     ArrayList<String> filesContent = FileUtils.getSeparateFileContents(Constants.CRAN_FILEPATH, Constants.DOC_DELIM);
 
     ArrayList<Document> docs = DocumentUtils.generateDocsFromFiles(filesContent, Constants.FIELD_NAMES, Constants.FIELD_DELIMS);
+
+    IndexWriter iwriter = Indexer.initIndexWithDocuments(docs, Constants.INDEX_DIRECTORY);
 
     for(int i = 0 ; i < filesContent.size(); i++)
     {
