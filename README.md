@@ -2,12 +2,12 @@
 Parsing queries and returning results from the [Cranfield Collection](http://ir.dcs.gla.ac.uk/resources/test_collections/cran/)     
 
 
-### Run      
+### Compile     
 ```
 mvn package
 ```
 
-### Compile      
+### Run        
 ```
 java -jar target/CranfieldQueryParser-1.2.jar
 ```   
