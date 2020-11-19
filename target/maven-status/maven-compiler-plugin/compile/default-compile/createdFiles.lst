@@ -1,2 +1,4 @@
+util/StringUtils.class
 util/FileUtils.class
 searchengine/SearchEngine.class
+util/DocumentUtils.class

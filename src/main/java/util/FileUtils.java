@@ -1,12 +1,13 @@
 package util;
 
+import util.StringUtils;
+
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.io.IOException;
 import java.lang.OutOfMemoryError;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -20,7 +21,7 @@ public class FileUtils
   {
     String filesContents = readAll(filepath);
 
-    ArrayList<String> docContents = new ArrayList<String>(Arrays.asList(filesContents.replaceFirst("^" + docDelimiter, "").split(docDelimiter)));
+    ArrayList<String> docContents = StringUtils.splitWithDelimiter(filesContents, docDelimiter);
 
     return docContents;
   }
@@ -42,15 +43,15 @@ public class FileUtils
   @param fields: Array of Field objects which need to be added to the document
   @return: Document with fields given
   */
-  private static Document initDocument(Field[] fields)
-  {
-    Document doc = new Document();
-
-    for(Field field : fields)
-      doc.add(field);
-
-    return doc;
-  }
+  // private static Document initDocument(Field[] fields)
+  // {
+  //   Document doc = new Document();
+  //
+  //   for(Field field : fields)
+  //     doc.add(field);
+  //
+  //   return doc;
+  // }
 
   // public static ArrayList<Document> readAllDocuments(String filepath, String[] fieldNames, String docDelimiter)
   // {
