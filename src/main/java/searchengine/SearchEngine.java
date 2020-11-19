@@ -9,7 +9,7 @@ public class SearchEngine
 {
   public static void main(String[] args) throws IOException
   {
-    ArrayList<String> contents = FileUtils.readFieldsFromFile("data/cran/cran.all.1400", null, ".I [0-9]+\n");
+    ArrayList<String> contents = FileUtils.getSeparateFileContents("data/cran/cran.all.1400", ".I [0-9]+\n");
 
     for(int i = 0 ; i < contents.size(); i++)
     {

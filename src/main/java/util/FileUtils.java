@@ -17,7 +17,14 @@ import org.apache.lucene.document.TextField;
 public class FileUtils
 {
 
-  public static ArrayList<String> readFieldsFromFile(String filepath, String[] fieldNames, String docDelimiter) throws IOException
+  /**
+    Returns the filecontents of the given filepath, split with the delimiter given, as an ArrayList<String>
+
+    @param filepath: path of the file to be read
+    @param docDelimiter: delimiter to split file by
+    @return: ArrayList with the split fileContents, if file exists
+  */
+  public static ArrayList<String> getSeparateFileContents(String filepath, String docDelimiter) throws IOException
   {
     String filesContents = readAll(filepath);
 
@@ -27,10 +34,10 @@ public class FileUtils
   }
 
   /**
-  Reads all contents from a file and returns it, if the file exists.
+    Reads all contents from a file and returns it, if the file exists.
 
-  @param path: filepath of the file to be read
-  @return: String with filecontents, if the file exists
+    @param path: filepath of the file to be read
+    @return: String with filecontents, if the file exists
   */
   private static String readAll(String path) throws InvalidPathException, IOException, OutOfMemoryError, SecurityException
   {
@@ -38,10 +45,10 @@ public class FileUtils
   }
 
   /**
-  Creates a Document object with the fields given and returns it
+    Creates a Document object with the fields given and returns it
 
-  @param fields: Array of Field objects which need to be added to the document
-  @return: Document with fields given
+    @param fields: Array of Field objects which need to be added to the document
+    @return: Document with fields given
   */
   // private static Document initDocument(Field[] fields)
   // {
