@@ -2,6 +2,7 @@ package searchengine;
 
 import util.FileUtils;
 import util.DocumentUtils;
+import constants.Constants;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,11 +16,9 @@ public class SearchEngine
   */
   public static void main(String[] args) throws IOException
   {
-    ArrayList<String> filesContent = FileUtils.getSeparateFileContents("data/cran/cran.all.1400", ".I [0-9]+\n");
+    ArrayList<String> filesContent = FileUtils.getSeparateFileContents(Constants.CRAN_FILEPATH, Constants.DOC_DELIM);
 
-    String[] fieldNames = {"title", "author", "background", "content"};
-    String[] fieldDelimiters = {".T\n", ".A\n", ".B\n", ".W\n"};
-    ArrayList<Document> docs = DocumentUtils.generateDocsFromFiles(filesContent, fieldNames, fieldDelimiters);
+    ArrayList<Document> docs = DocumentUtils.generateDocsFromFiles(filesContent, Constants.FIELD_NAMES, Constants.FIELD_DELIMS);
 
     for(int i = 0 ; i < filesContent.size(); i++)
     {
