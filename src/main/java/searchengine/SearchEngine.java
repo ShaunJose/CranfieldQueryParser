@@ -3,20 +3,22 @@ package searchengine;
 import util.FileUtils;
 import util.DocumentUtils;
 import constants.Constants;
-import indexer.Indexer;
+import inforetrieval.Indexer;
+import inforetrieval.QueryResultRetriever;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.queryparser.classic.ParseException;
 
 public class SearchEngine
 {
   /**
     Gets Cranfield documents, indexes it etc TODO
   */
-  public static void main(String[] args) throws IOException
+  public static void main(String[] args) throws IOException, ParseException
   {
     ArrayList<String> filesContent = FileUtils.getSeparateFileContents(Constants.CRAN_FILEPATH, Constants.DOC_DELIM);
 
@@ -25,16 +27,18 @@ public class SearchEngine
     IndexWriter iwriter = Indexer.initIndexWithDocuments(docs, Constants.INDEX_DIRECTORY);
 
     ArrayList<String> queries = FileUtils.getSeparateFileContents(Constants.CRAN_QRY_FILEPATH, Constants.QUERY_DELIM);
+
+    QueryResultRetriever.getResultsOfQueries(queries, Constants.INDEX_DIRECTORY, Constants.MAX_RESULTS_PER_QRY);
     //
     // for(int i = 0 ; i < filesContent.size(); i++)
     // {
     //   System.out.println((i + 1) + ": " + filesContent.get(i));
     // }
 
-    for(int i = 0 ; i < 10; i++)
-    {
-      System.out.println((i + 1) + ": " + queries.get(i));
-    }
+    // for(int i = 0 ; i < 10; i++)
+    // {
+    //   System.out.println((i + 1) + ": " + queries.get(i));
+    // }
     //
     // System.out.println(docs.size());
     //

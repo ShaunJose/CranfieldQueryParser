@@ -1,4 +1,4 @@
-package indexer;
+package inforetrieval;
 
 import java.util.ArrayList;
 import java.nio.file.Paths;
