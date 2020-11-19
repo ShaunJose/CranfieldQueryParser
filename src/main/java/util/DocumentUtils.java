@@ -8,7 +8,6 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
 
-//TODO: Global cleanup (including imports)
 //TODO: change access modifiers globally
 //TODO: all function specs
 //TODO: constants
@@ -47,33 +46,5 @@ public class DocumentUtils
 
     return doc;
   }
-
-  // public static ArrayList<Document> getSeparateDocs(String filepath, String docDelimiter, String[] sectionDelimiters)
-  // {
-  //   ArrayList<Document> docs = new ArrayList<Document>();
-  //   String allFiles = FileUtils.readAll(filepath);
-  //
-  //   // int startIndex = findNextDoc(allFiles, docDelimiter);
-  //   //TODO: iterate over delimiters and get PartOfString
-  //
-  // }
-  //
-  // private int findNextDoc(String contents, String docDelimiter)
-  // {
-  //   Scanner sc = new Scanner(contents);
-  //
-  //   while(sc.hasNextLine())
-  //   {
-  //     String line = sc.nextLine();
-  //
-  //     if(line.startsWith(docDelimiter))
-  //       sc.nextLine();
-  //
-  //
-  //   }
-  //
-  //   return -1;
-  // }
-  //
 
 }
