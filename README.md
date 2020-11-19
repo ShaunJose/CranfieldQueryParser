@@ -13,21 +13,9 @@ java -jar target/CranfieldQueryParser-1.2.jar
 ```   
 
 
-### Dependencies     
+### Dependencies       
 
-1. [Lucene](https://lucene.apache.org/)  
-
-    macOS installation:
-    ```
-    brew install lucene
-    ```    
-
-    Linux installation
-    ```
-    apt-get install lucene
-    ```    
-
-2. [Maven](https://maven.apache.org/)    
+1. [Maven](https://maven.apache.org/)    
 
     macOS installation
     ```
@@ -38,3 +26,8 @@ java -jar target/CranfieldQueryParser-1.2.jar
     ```
     apt-get install maven
     ```   
+
+
+2. [Lucene](https://lucene.apache.org/)  
+
+    This automatically gets downloaded by maven during compilation.
