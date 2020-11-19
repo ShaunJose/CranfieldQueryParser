@@ -43,4 +43,11 @@ class StringUtils
     return str.substring(start, end);
   }
 
+  public static String getContentAfter(String str, String beginStr)
+  {
+    int start = str.indexOf(beginStr) + beginStr.length();
+
+    return str.substring(start);
+  }
+
 }
