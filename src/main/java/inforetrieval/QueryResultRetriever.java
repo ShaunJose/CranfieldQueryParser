@@ -1,5 +1,7 @@
 package inforetrieval;
 
+import util.StringUtils;
+
 import java.util.ArrayList;
 import java.nio.file.Paths;
 import java.io.IOException;
@@ -33,9 +35,7 @@ public class QueryResultRetriever
 
     for(int i = 0; i < queries.size(); i++)
     {
-      String queryStr = queries.get(i).trim();
-      queryStr = queryStr.replaceAll(
-          "[^a-zA-Z0-9 ]", "");
+      String queryStr = StringUtils.cleanup(queries.get(i));
       System.out.println("Query " + (i+1) + ": " + queryStr);
 
       if (queryStr.length() > 0)

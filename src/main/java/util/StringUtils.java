@@ -3,8 +3,23 @@ package util;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class StringUtils
+public class StringUtils
 {
+
+  /**
+    Preprocessing on string to remove non alpha-numeric characters and trim edge whitespaces
+
+    @param str: String to be cleaned up
+    @return: String without non alpha-numeric characters and edge whitespaces
+  */
+  public static String cleanup(String str)
+  {
+    if(str == null)
+      return null;
+
+    return str.replaceAll(
+        "[^a-zA-Z0-9 ]", "").trim();
+  }
 
   /**
     Splits string with delimiter and returns an arraylist of the splits.
