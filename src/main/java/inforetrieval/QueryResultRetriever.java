@@ -56,6 +56,9 @@ public class QueryResultRetriever
       }
     }
 
+    ireader.close();
+    directory.close();
+
   }
 
 }

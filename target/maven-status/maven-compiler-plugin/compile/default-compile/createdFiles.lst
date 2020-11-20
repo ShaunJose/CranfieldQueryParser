@@ -1,6 +1,7 @@
 util/StringUtils.class
 constants/Constants.class
 searchengine/SearchEngine.class
+inforetrieval/Evaluater.class
 util/DocumentUtils.class
 inforetrieval/Indexer.class
 util/FileUtils.class
