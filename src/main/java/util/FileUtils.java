@@ -22,6 +22,7 @@ public class FileUtils
   public static ArrayList<String> getSeparateFileContents(String filepath, String docDelimiter) throws IOException
   {
     String filesContents = readAll(filepath);
+    
 
     ArrayList<String> docContents = StringUtils.splitWithDelimiter(filesContents, docDelimiter);
 

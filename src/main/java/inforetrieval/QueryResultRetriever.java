@@ -5,7 +5,9 @@ import java.nio.file.Paths;
 import java.io.IOException;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.index.DirectoryReader;
@@ -21,7 +23,7 @@ public class QueryResultRetriever
 
   public static void getResultsOfQueries(ArrayList<String> queries, String indexDir, int maxResults) throws IOException, ParseException
   {
-    Analyzer analyzer = new StandardAnalyzer();
+    Analyzer analyzer = new EnglishAnalyzer();
     QueryParser parser = new QueryParser("content", analyzer);
 
     // create objects to read and search across the index
@@ -32,6 +34,8 @@ public class QueryResultRetriever
     for(int i = 0; i < queries.size(); i++)
     {
       String queryStr = queries.get(i).trim();
+      queryStr = queryStr.replaceAll(
+          "[^a-zA-Z0-9 ]", "");
       System.out.println("Query " + (i+1) + ": " + queryStr);
 
       if (queryStr.length() > 0)
