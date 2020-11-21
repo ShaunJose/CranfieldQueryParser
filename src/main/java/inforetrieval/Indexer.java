@@ -19,7 +19,7 @@ public class Indexer
 
   public static IndexWriter initIndexWithDocuments(ArrayList<Document> docs, String indexDir) throws IOException
   {
-    Analyzer analyzer = new EnglishAnalyzer();
+    Analyzer analyzer = new StandardAnalyzer();
 
     Directory directory = FSDirectory.open(Paths.get(indexDir));
 

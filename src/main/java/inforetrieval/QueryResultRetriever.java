@@ -24,9 +24,9 @@ import org.apache.lucene.queryparser.classic.ParseException;
 public class QueryResultRetriever
 {
 
-  public static void getResultsOfQueries(ArrayList<String> queries, String indexDir, int maxResults) throws IOException, ParseException
+  public static void generateResultsOfQueries(ArrayList<String> queries, String indexDir, int maxResults) throws IOException, ParseException
   {
-    Analyzer analyzer = new EnglishAnalyzer();
+    Analyzer analyzer = new SimpleAnalyzer();
     QueryParser parser = new QueryParser("content", analyzer);
 
     // create objects to read and search across the index
@@ -57,7 +57,6 @@ public class QueryResultRetriever
           Document hitDoc = isearcher.doc(hits[j].doc);
           String line = queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + (j+1) + gap + hits[j].score + gap + "STANDARD";
           fileWriter.println(line);
-          // System.out.println(queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + j + gap + hits[j].score + gap + "STANDARD");
         }
       }
     }

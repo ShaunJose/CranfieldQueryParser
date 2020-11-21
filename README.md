@@ -7,11 +7,16 @@ Parsing queries and returning results from the [Cranfield Collection](http://ir.
 mvn package
 ```
 
-### Run        
+### Run          
 ```
 java -jar target/CranfieldQueryParser-1.2.jar
 ```   
 
+### Evaluate     
+Note: You must run the program jar before evaluating it     
+```
+trec_eval-9.0.7/trec_eval data/cran/QRelsCorrectedforTRECeval results.txt
+```    
 
 ### Dependencies       
 
