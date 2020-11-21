@@ -23,8 +23,11 @@ public class DocumentUtils
   {
     ArrayList<Document> docs = new ArrayList<Document>();
 
-    for (String fileContent : filesContent)
-      docs.add(generateDocFromFile(fileContent, fieldNames, fieldDelims));
+    for(int i = 0; i < filesContent.size(); i++)
+    {
+      String id = "" + (i + 1);
+      docs.add(generateDocFromFile(filesContent.get(i), fieldNames, fieldDelims, id));
+    }
 
     return docs;
   }
@@ -37,12 +40,13 @@ public class DocumentUtils
     @param fieldDelims: Delimiters of fields in the file's contents
     @return: ArrayList of Documents with fields given from file's contents given
   */
-  private static Document generateDocFromFile(String fileContent, String[] fieldNames, String[] fieldDelims)
+  private static Document generateDocFromFile(String fileContent, String[] fieldNames, String[] fieldDelims, String id)
   {
-    String[] fields = new String[fieldDelims.length];
+    String[] fields = new String[fieldNames.length];
+    fields[0] = id;
 
     int i;
-    for(i = 0; i < fields.length - 1; i++)
+    for(i = 1; i < fields.length - 1; i++)
       fields[i] = StringUtils.getContentBetween(fileContent, fieldDelims[i], fieldDelims[i+1]);
 
     fields[i] = StringUtils.getContentAfter(fileContent, fieldDelims[fieldDelims.length - 1]);

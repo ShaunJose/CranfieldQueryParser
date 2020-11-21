@@ -4,6 +4,7 @@ import util.StringUtils;
 
 import java.util.ArrayList;
 import java.nio.file.Paths;
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -33,10 +34,12 @@ public class QueryResultRetriever
 		DirectoryReader ireader = DirectoryReader.open(directory);
 		IndexSearcher isearcher = new IndexSearcher(ireader);
 
-    for(int i = 0; i < queries.size(); i++)
+    String gap = "     ";
+
+    for(int queryIndex = 0; queryIndex < queries.size(); queryIndex++)
     {
-      String queryStr = StringUtils.cleanup(queries.get(i));
-      System.out.println("Query " + (i+1) + ": " + queryStr);
+      String queryId = "" + (queryIndex + 1);
+      String queryStr = StringUtils.cleanup(queries.get(queryIndex));
 
       if (queryStr.length() > 0)
       {
@@ -47,11 +50,10 @@ public class QueryResultRetriever
         ScoreDoc[] hits = isearcher.search(query, maxResults).scoreDocs;
 
         // Print the results
-        System.out.println("Documents: " + hits.length);
         for (int j = 0; j < hits.length; j++)
         {
           Document hitDoc = isearcher.doc(hits[j].doc);
-          System.out.println(j + ") " + hitDoc.get("title") + " " + hits[j].score);
+          System.out.println(queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + j + gap + hits[j].score + gap + "STANDARD");
         }
       }
     }
