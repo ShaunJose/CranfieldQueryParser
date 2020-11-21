@@ -16,7 +16,7 @@ import org.apache.lucene.queryparser.classic.ParseException;
 public class SearchEngine
 {
   /**
-    Gets Cranfield documents, indexes it etc TODO
+    Gets contents of each document from the cranfield document collection, generates documents using those contents, and creates indexes. Then reads queries and parses queries through the index, storing the results in a file
   */
   public static void main(String[] args) throws IOException, ParseException
   {
@@ -24,10 +24,10 @@ public class SearchEngine
 
     ArrayList<Document> docs = DocumentUtils.generateDocsFromFiles(filesContent, Constants.FIELD_NAMES, Constants.FIELD_DELIMS);
 
-    IndexWriter iwriter = Indexer.initIndexWithDocuments(docs, Constants.INDEX_DIRECTORY);
+    Indexer.initIndexWithDocuments(docs, Constants.INDEX_DIRECTORY);
 
     ArrayList<String> queries = FileUtils.getSeparateFileContents(Constants.CRAN_QRY_FILEPATH, Constants.QUERY_DELIM);
 
-    QueryResultRetriever.generateResultsOfQueries(queries, Constants.INDEX_DIRECTORY, Constants.MAX_RESULTS_PER_QRY);
+    QueryResultRetriever.generateResultsOfQueries(queries, Constants.INDEX_DIRECTORY, Constants.MAX_RESULTS_PER_QRY, Constants.RESULTS_FILEPATH);
   }
 }

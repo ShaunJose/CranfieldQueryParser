@@ -17,9 +17,16 @@ import org.apache.lucene.analysis.en.EnglishAnalyzer;
 public class Indexer
 {
 
-  public static IndexWriter initIndexWithDocuments(ArrayList<Document> docs, String indexDir) throws IOException
+  /**
+    Creates indexes (index-files) for the documents passed to it.
+
+    @param docs: ArrayList of documents to be indexed
+    @param indexDir: Directory to create indexes in
+    @return: None
+  */
+  public static void initIndexWithDocuments(ArrayList<Document> docs, String indexDir) throws IOException
   {
-    Analyzer analyzer = new StandardAnalyzer();
+    Analyzer analyzer = new StandardAnalyzer(); //SimpleAnalyzer, EnglishAnalyzer
 
     Directory directory = FSDirectory.open(Paths.get(indexDir));
 
@@ -31,8 +38,6 @@ public class Indexer
 
 		iwriter.close();
 		directory.close();
-
-    return iwriter;
   }
 
 }

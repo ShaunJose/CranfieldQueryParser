@@ -25,8 +25,8 @@ public class DocumentUtils
 
     for(int i = 0; i < filesContent.size(); i++)
     {
-      String id = "" + (i + 1);
-      docs.add(generateDocFromFile(filesContent.get(i), fieldNames, fieldDelims, id));
+      String docId = "" + (i + 1);
+      docs.add(generateDocFromFile(filesContent.get(i), fieldNames, fieldDelims, docId));
     }
 
     return docs;
@@ -38,17 +38,21 @@ public class DocumentUtils
     @param fileContent: Contents of the files
     @param fieldNames: Array of names of the fields in the file's contents
     @param fieldDelims: Delimiters of fields in the file's contents
+    @param docId: id of the document being generated
     @return: ArrayList of Documents with fields given from file's contents given
   */
-  private static Document generateDocFromFile(String fileContent, String[] fieldNames, String[] fieldDelims, String id)
+  private static Document generateDocFromFile(String fileContent, String[] fieldNames, String[] fieldDelims, String docId)
   {
+    //init fields and first field (document id)
     String[] fields = new String[fieldNames.length];
-    fields[0] = id;
+    fields[0] = docId;
 
+    //init central fields (title, author, background)
     int i;
     for(i = 1; i < fields.length - 1; i++)
       fields[i] = StringUtils.getContentBetween(fileContent, fieldDelims[i], fieldDelims[i+1]);
 
+    //init last field (content) - the most important one
     fields[i] = StringUtils.getContentAfter(fileContent, fieldDelims[fieldDelims.length - 1]);
 
     return initDoc(fieldNames, fields);

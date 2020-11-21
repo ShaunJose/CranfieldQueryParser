@@ -32,6 +32,7 @@ public class StringUtils
   {
     ArrayList<String> splits = new ArrayList<String>(Arrays.asList(str.split(delim)));
 
+    //remove first element if it's empty
     String firstElem = splits.get(0);
     if(firstElem == null || firstElem.isEmpty())
       splits.remove(0);

@@ -24,20 +24,30 @@ import org.apache.lucene.queryparser.classic.ParseException;
 public class QueryResultRetriever
 {
 
-  public static void generateResultsOfQueries(ArrayList<String> queries, String indexDir, int maxResults) throws IOException, ParseException
+  /**
+    Runs queries through document indexes stored in the index Directory, and generates a text file containing the results per query with the ranking and score of the document relevance for the query.
+
+    @param queries: Arraylist of preprocessed queries
+    @param indexDir: directory where the indexes are stored
+    @param maxResults: Maximum number of results to display per query
+    @param resultsFilepath: File to store the results in
+    @return: None
+  */
+  public static void generateResultsOfQueries(ArrayList<String> queries, String indexDir, int maxResults, String resultsFilepath) throws IOException, ParseException
   {
-    Analyzer analyzer = new SimpleAnalyzer();
+    Analyzer analyzer = new StandardAnalyzer(); //SimpleAnalyzer, EnglishAnalyzer
     QueryParser parser = new QueryParser("content", analyzer);
 
-    // create objects to read and search across the index
+    // Create objects to read and search across the index generated previously
     Directory directory = FSDirectory.open(Paths.get(indexDir));
 		DirectoryReader ireader = DirectoryReader.open(directory);
 		IndexSearcher isearcher = new IndexSearcher(ireader);
 
-    PrintWriter fileWriter = new PrintWriter("results.txt", "UTF-8");
-
+    // Create a filewriter to write the results in the results file
+    PrintWriter fileWriter = new PrintWriter(resultsFilepath, "UTF-8");
     String gap = "     ";
 
+    // Preprocess query and get matching results from the index
     for(int queryIndex = 0; queryIndex < queries.size(); queryIndex++)
     {
       String queryId = "" + (queryIndex + 1);
@@ -45,22 +55,24 @@ public class QueryResultRetriever
 
       if (queryStr.length() > 0)
       {
-        // parse the query with the parser
+        // Parse query
         Query query = parser.parse(queryStr);
 
-        // Get the set of results
+        // Number of matches
         ScoreDoc[] hits = isearcher.search(query, maxResults).scoreDocs;
 
-        // Print the results
+        // Write results of each document for each query: "queryId, Q0, documentId, rank, score, STANDARD" to results file
         for (int j = 0; j < hits.length; j++)
         {
           Document hitDoc = isearcher.doc(hits[j].doc);
-          String line = queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + (j+1) + gap + hits[j].score + gap + "STANDARD";
+          String docRank = "" + (j + 1);
+          String line = queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + docRank + gap + hits[j].score + gap + "STANDARD";
           fileWriter.println(line);
         }
       }
     }
 
+    //close reader, directory and writer
     ireader.close();
     directory.close();
     fileWriter.close();

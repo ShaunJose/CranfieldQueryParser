@@ -10,6 +10,7 @@ public class Constants
   public static final String INDEX_DIRECTORY = "index/";
   public static final String CRAN_QRY_FILEPATH = "data/cran/cran.qry";
   public static final String QUERY_DELIM = ".I [0-9]+\r\n.W\r\n";
+  public static final String RESULTS_FILEPATH = "results.txt";
   public static final int MAX_RESULTS_PER_QRY = 1400;
 
 }
