@@ -4,7 +4,7 @@ import util.StringUtils;
 
 import java.util.ArrayList;
 import java.nio.file.Paths;
-import java.io.File;
+import java.io.PrintWriter;
 import java.io.IOException;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -34,6 +34,8 @@ public class QueryResultRetriever
 		DirectoryReader ireader = DirectoryReader.open(directory);
 		IndexSearcher isearcher = new IndexSearcher(ireader);
 
+    PrintWriter fileWriter = new PrintWriter("results.txt", "UTF-8");
+
     String gap = "     ";
 
     for(int queryIndex = 0; queryIndex < queries.size(); queryIndex++)
@@ -53,13 +55,16 @@ public class QueryResultRetriever
         for (int j = 0; j < hits.length; j++)
         {
           Document hitDoc = isearcher.doc(hits[j].doc);
-          System.out.println(queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + j + gap + hits[j].score + gap + "STANDARD");
+          String line = queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + (j+1) + gap + hits[j].score + gap + "STANDARD";
+          fileWriter.println(line);
+          // System.out.println(queryId + gap + "Q0" + gap + hitDoc.get("id") + gap + j + gap + hits[j].score + gap + "STANDARD");
         }
       }
     }
 
     ireader.close();
     directory.close();
+    fileWriter.close();
 
   }
 
